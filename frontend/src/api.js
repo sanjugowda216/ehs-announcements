@@ -20,6 +20,9 @@ export const api = {
     http("/announcements", {
       method: "POST",
       body: JSON.stringify(payload),
-      headers: { "X-Admin-Token": adminToken },
+      headers: {
+        "Content-Type": "application/json",
+        "X-Admin-Token": adminToken,
+      },
     }),
 };

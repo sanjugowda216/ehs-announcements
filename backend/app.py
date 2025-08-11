@@ -145,6 +145,7 @@ def list_announcements(active_only: bool = True):
             a for a in items
             if a.get("active", True)
             and datetime.fromisoformat(a["startDate"]) <= now <= datetime.fromisoformat(a["endDate"])
+            and (not a.get("notifyAt") or datetime.fromisoformat(a["notifyAt"]) <= now)
         ]
     # sort by priority desc then startDate desc
     items.sort(key=lambda a: (-int(a.get("priority", 10)), a.get("startDate", "")), reverse=True)
